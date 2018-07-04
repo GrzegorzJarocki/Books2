@@ -1,6 +1,7 @@
 package pl.coderslab.model;
 
 import org.springframework.stereotype.Service;
+import pl.coderslab.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 @Service
 public class MemoryBookService {
     private List<Book> list;
+
     public MemoryBookService() {
         list = new ArrayList<>();
         list.add(new Book(1L, "9788324631766", "Thinking in Java", "Bruce Eckel",
@@ -20,11 +22,20 @@ public class MemoryBookService {
     public List<Book> getList() {return list;}
     public void setList(List<Book> list) {this.list = list;}
 
-    public Book getItemById(long id){
-        for(Book b: getList()){
-            if(b.getId()==id) return b;
+    public Book loadById(long id){
+        for (Book b: getList()){
+            if(b.getId()==id){
+                return b;
+            }
         }
         return null;
     }
+    public void remove(Book book){
+        list.remove(book);
+    }
+    public void add(Book book){
+        list.add(book);
+    }
+
 
 }
