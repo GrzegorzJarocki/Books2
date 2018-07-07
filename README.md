@@ -1,4 +1,4 @@
-# Warsztat5
+# Books2
 
 Backend functionality for cataloging books using the REST method.
 
